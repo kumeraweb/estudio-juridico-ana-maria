@@ -1,0 +1,372 @@
+---
+const navLinks = [
+  { label: 'Inicio', href: '/#inicio' },
+  { label: 'Sobre el Estudio', href: '/sobre' },
+  { label: 'Contacto', href: '/contacto' }
+]
+
+const serviceLinks = [
+  { label: 'Derecho Sucesorio', href: '/sucesorio' },
+  { label: 'Derecho de Familia', href: '/familia' },
+  { label: 'Derecho Inmobiliario', href: '/inmobiliario' }
+]
+---
+
+<header class="navbar">
+  <div class="navbar__container">
+    <!-- Logo -->
+    <a href="/" class="navbar__logo">
+      <img src="/logo/logo-nbg.png" alt="Estudio Jurídico Ana María Erazo" loading="eager" />
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="navbar__nav">
+      {
+        navLinks.map((link) => (
+          <a href={link.href} class="navbar__link">
+            {link.label}
+          </a>
+        ))
+      }
+
+      <!-- Servicios -->
+      <div class="navbar__services">
+        <button
+          type="button"
+          class="navbar__link navbar__services-trigger"
+          id="servicesTrigger"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Servicios <span class="chevron">▾</span>
+        </button>
+      </div>
+
+      <!-- Mega menu -->
+      <div class="navbar__services-panel" id="servicesPanel" aria-label="Áreas de práctica">
+        <div class="navbar__services-panel-inner">
+          <span class="services-title">Áreas de Práctica</span>
+
+          <div class="services-grid">
+            {
+              serviceLinks.map((service) => (
+                <a href={service.href} class="navbar__services-item">
+                  {service.label}
+                </a>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Mobile Trigger -->
+    <button class="navbar__mobile-trigger" aria-label="Abrir menú"> Menú </button>
+  </div>
+
+  <!-- Mobile Slide Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu__content">
+      <button class="mobile-menu__close" aria-label="Cerrar menú">×</button>
+
+      <nav class="mobile-menu__nav">
+        {navLinks.map((link) => <a href={link.href}>{link.label}</a>)}
+
+        <div class="mobile-menu__services">
+          <span>Servicios</span>
+          {serviceLinks.map((service) => <a href={service.href}>{service.label}</a>)}
+        </div>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<script>
+  const trigger = document.querySelector('.navbar__mobile-trigger')
+  const mobileMenu = document.getElementById('mobileMenu')
+  const closeBtn = document.querySelector('.mobile-menu__close')
+
+  trigger?.addEventListener('click', () => {
+    mobileMenu?.classList.add('is-open')
+  })
+
+  closeBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.remove('is-open')
+  })
+
+  // Desktop mega menu (click-to-toggle)
+  const servicesTrigger = document.getElementById('servicesTrigger')
+  const servicesPanel = document.getElementById('servicesPanel')
+
+  const closeServicesMenu = () => {
+    if (!servicesTrigger || !servicesPanel) return
+    servicesPanel.classList.remove('is-open')
+    servicesTrigger.setAttribute('aria-expanded', 'false')
+  }
+
+  const openServicesMenu = () => {
+    if (!servicesTrigger || !servicesPanel) return
+    servicesPanel.classList.add('is-open')
+    servicesTrigger.setAttribute('aria-expanded', 'true')
+  }
+
+  const toggleServicesMenu = () => {
+    if (!servicesTrigger || !servicesPanel) return
+    const isOpen = servicesPanel.classList.contains('is-open')
+    if (isOpen) closeServicesMenu()
+    else openServicesMenu()
+  }
+
+  servicesTrigger?.addEventListener('click', (e) => {
+    e.stopPropagation()
+    toggleServicesMenu()
+  })
+
+  servicesPanel?.addEventListener('click', (e) => {
+    // allow clicking inside without closing immediately
+    e.stopPropagation()
+
+    // close when clicking a link inside the panel
+    const target = e.target
+    if (target instanceof Element && target.closest('a')) {
+      closeServicesMenu()
+    }
+  })
+
+  document.addEventListener('click', () => {
+    closeServicesMenu()
+  })
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeServicesMenu()
+  })
+
+  // Safety: if user opens mobile menu, close desktop mega menu
+  trigger?.addEventListener('click', () => {
+    closeServicesMenu()
+  })
+</script>
+
+<style>
+  /* =====================
+     BASE NAVBAR
+  ====================== */
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .navbar__container {
+    position: relative; /* CLAVE para el mega menu */
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: var(--space-4) var(--container-padding);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* LOGO */
+  .navbar__logo img {
+    height: 64px;
+    max-width: 320px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  /* DESKTOP NAV */
+  .navbar__nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .navbar__link {
+    text-decoration: none;
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-sm);
+    cursor: pointer;
+  }
+
+  .navbar__link:hover {
+    color: var(--color-primary);
+  }
+
+  /* =====================
+     SERVICES MEGA MENU
+  ====================== */
+  .navbar__services {
+    position: relative;
+  }
+
+  .navbar__services::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -12px;
+    height: 12px;
+  }
+
+  .navbar__services-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+  }
+
+  .chevron {
+    font-size: 0.7em;
+  }
+
+  .navbar__services-panel {
+    position: absolute;
+    top: calc(100% - 2px);
+    left: 0;
+    width: 100%;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    display: none;
+    z-index: 150;
+  }
+
+  .navbar__services-panel.is-open {
+    display: block;
+  }
+
+  .navbar__services-panel-inner {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: var(--space-6) var(--container-padding);
+  }
+
+  .services-title {
+    display: block;
+    white-space: nowrap;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-4);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-6);
+  }
+
+  .navbar__services-item {
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: var(--color-text-primary);
+  }
+
+  .navbar__services-item:hover {
+    background: var(--color-surface);
+  }
+
+  /* =====================
+     MOBILE
+  ====================== */
+  .navbar__mobile-trigger {
+    display: none;
+    background: none;
+    border: none;
+  }
+
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-normal);
+  }
+
+  .mobile-menu.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mobile-menu__close {
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    cursor: pointer;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-6);
+  }
+
+  .mobile-menu__nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .mobile-menu__nav a {
+    text-decoration: none;
+    color: var(--color-text-primary);
+    font-size: var(--font-size-lg);
+  }
+
+  .mobile-menu__services {
+    margin-top: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .mobile-menu__services span {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .mobile-menu__content {
+    position: absolute;
+    right: 0;
+    width: 80%;
+    max-width: 320px;
+    height: 100%;
+    background: var(--color-bg);
+    padding: var(--space-6);
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    box-shadow: var(--shadow-md);
+  }
+
+  .mobile-menu.is-open .mobile-menu__content {
+    transform: translateX(0);
+  }
+
+  @media (max-width: 768px) {
+    .navbar__nav {
+      display: none;
+    }
+
+    .navbar__mobile-trigger {
+      display: block;
+    }
+
+    .navbar__services-panel {
+      display: none !important;
+    }
+  }
+</style>

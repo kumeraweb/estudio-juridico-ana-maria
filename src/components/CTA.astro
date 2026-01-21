@@ -1,0 +1,63 @@
+---
+/**
+ * CTA Section — Editorial / Conversion
+ * Nota: CTA visual únicamente, sin funcionalidad por ahora.
+ */
+---
+
+<section
+  class="relative bg-[#0E2A42] px-6 py-24 text-white md:px-10"
+  aria-label="Llamado a la acción"
+>
+  <div class="mx-auto max-w-5xl text-center">
+    <!-- Eyebrow -->
+    <p class="text-xs uppercase tracking-[0.28em] text-white/60">Contacto</p>
+
+    <!-- Headline -->
+    <h2 class="mt-6 font-serif text-4xl leading-tight md:text-5xl">Agenda una consulta</h2>
+
+    <!-- Copy -->
+    <p class="mx-auto mt-8 max-w-xl text-sm leading-relaxed text-white/75">
+      Si necesitas orientación jurídica clara y un acompañamiento cercano, puedes contactarme para
+      agendar una primera consulta y evaluar tu caso.
+    </p>
+
+    <!-- Form (visual only) -->
+    <form
+      class="mx-auto mt-14 grid max-w-3xl grid-cols-1 gap-6 md:grid-cols-2"
+      onsubmit="return false"
+    >
+      <input
+        type="text"
+        placeholder="Nombre completo"
+        class="rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/40 backdrop-blur-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#CF6538]/70"
+      />
+
+      <input
+        type="email"
+        placeholder="Correo electrónico"
+        class="rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/40 backdrop-blur-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#CF6538]/70"
+      />
+
+      <textarea
+        placeholder="Cuéntame brevemente tu caso"
+        rows="4"
+        class="md:col-span-2 rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/40 backdrop-blur-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[#CF6538]/70"
+      ></textarea>
+
+      <div class="md:col-span-2 mt-4">
+        <button
+          type="submit"
+          class="inline-flex w-full items-center justify-center rounded-xl bg-[#CF6538] px-6 py-4 text-sm font-medium text-white transition hover:bg-[#b9552f] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+        >
+          Enviar solicitud
+        </button>
+      </div>
+    </form>
+
+    <!-- Nota -->
+    <p class="mt-6 text-xs tracking-wide text-white/45">
+      El envío del formulario no genera compromiso inmediato.
+    </p>
+  </div>
+</section>

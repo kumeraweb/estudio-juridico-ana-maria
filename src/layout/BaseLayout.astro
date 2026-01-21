@@ -1,0 +1,64 @@
+---
+import '../styles/global.css'
+import Footer from '../components/Footer.astro'
+
+interface Props {
+  title?: string
+  description?: string
+  canonical?: string
+}
+
+const {
+  title = 'Estudio Jurídico Ana María Erazo',
+  description = 'Estudio Jurídico Ana María Erazo. Abogada especialista en derecho sucesorio, derecho de familia y derecho inmobiliario en la Región del Biobío.',
+  canonical
+} = Astro.props
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    {canonical && <link rel="canonical" href={canonical} />}
+
+    <!-- SEO básico -->
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Ana María Erazo" />
+    <meta name="theme-color" content="#0E2A42" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="es_CL" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!--
+      ================================
+      Google Tag (gtag.js) – FUTURO
+      ================================
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXX');
+      </script>
+    -->
+  </head>
+
+  <body>
+    <main id="main-content" class="min-h-screen bg-white text-slate-800">
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>

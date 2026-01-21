@@ -1,0 +1,395 @@
+---
+/**
+ * Hero B — "Legal Boutique - High-End Editorial"
+ * Notes:
+ * - Expects a transparent PNG/WebP cutout at: /images/ana-silueta.png
+ *   (You can temporarily point it to any image; best results with removed background.)
+ * - Tailwind is assumed installed and working.
+ */
+const navItems = [
+  { label: 'Inicio', href: '/' },
+  { label: 'Sobre', href: '/sobre' },
+  { label: 'Servicios', href: '/#servicios' },
+  { label: 'Contacto', href: '/contacto' }
+]
+---
+
+<section
+  class="heroB relative isolate min-h-[88vh] md:min-h-[92vh] overflow-hidden bg-[#0E2A42] text-white"
+  aria-label="Hero principal"
+>
+  <!-- Noise overlay (3%) -->
+  <div
+    class="pointer-events-none absolute inset-0 z-0 opacity-[0.03] mix-blend-overlay heroB__noise"
+  >
+  </div>
+
+  <!-- Subtle vignette / cinematic depth -->
+  <div
+    class="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(1200px_600px_at_20%_20%,rgba(255,255,255,0.10),transparent_60%),radial-gradient(900px_500px_at_85%_30%,rgba(207,101,56,0.10),transparent_55%),linear-gradient(180deg,rgba(0,0,0,0.20),rgba(0,0,0,0.35))]"
+  >
+  </div>
+
+  <!-- Justice scale background -->
+  <div
+    class="pointer-events-none absolute left-[-12%] top-1/2 z-0 hidden md:block heroB__justice"
+    aria-hidden="true"
+  >
+    <img
+      src="/images/hero-justice.png"
+      alt=""
+      class="w-[520px] max-w-none opacity-[0.08] blur-[1px]"
+      draggable="false"
+    />
+  </div>
+
+  <!-- Justice scale background (mobile) -->
+  <div
+    class="pointer-events-none absolute left-[25%] top-[18%] z-0 md:hidden heroB__justice-mobile"
+    aria-hidden="true"
+  >
+    <img
+      src="/images/hero-justice.png"
+      class="w-[100vw] max-w-[360px] opacity-[0.06] blur-[1.5px]"
+    />
+  </div>
+
+  <!-- Giant abstract "M" watermark -->
+  <div
+    class="pointer-events-none absolute -right-24 -top-40 z-0 select-none font-serif text-[38rem] leading-none text-white/[0.04] [transform:skewX(-8deg)] heroB__watermark hidden md:block"
+    aria-hidden="true"
+  >
+    AM
+  </div>
+
+  <!-- Responsive Header -->
+  <div class="absolute top-4 left-4 right-4 z-40 flex items-center justify-between">
+    <!-- Logo -->
+    <div class="flex items-center gap-3">
+      <img
+        src="/logo/lgb.png"
+        alt="Estudio Jurídico Ana María Erazo"
+        class="h-24 w-auto opacity-95 md:hidden mx-auto"
+      />
+    </div>
+
+    <!-- Desktop nav -->
+    <nav
+      class="hidden md:flex items-center gap-7 rounded-2xl border border-white/10 bg-white/5 px-6 py-3 backdrop-blur-xl"
+      aria-label="Navegación principal"
+    >
+      {
+        navItems.map((i) => (
+          <a
+            href={i.href}
+            class="text-sm tracking-wide text-white/85 transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#CF6538]/70"
+          >
+            {i.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <!-- Mobile menu -->
+    <details class="relative md:hidden">
+      <summary
+        class="list-none cursor-pointer rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-xs tracking-wide text-white/90 backdrop-blur-xl"
+      >
+        Menú
+      </summary>
+      <div
+        class="absolute right-0 mt-3 flex w-40 flex-col gap-3 rounded-2xl border border-white/10 bg-[#0E2A42]/90 px-4 py-4 backdrop-blur-xl"
+      >
+        {
+          navItems.map((i) => (
+            <a
+              href={i.href}
+              class="text-sm tracking-wide text-white/85 transition hover:text-white"
+            >
+              {i.label}
+            </a>
+          ))
+        }
+      </div>
+    </details>
+  </div>
+
+  <!-- Content wrapper -->
+  <div
+    class="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 pb-10 pt-24 md:grid-cols-12 md:gap-10 md:px-10 md:pb-20 md:pt-28 animate-hero-fade"
+  >
+    <!-- Left editorial copy -->
+    <div class="md:col-span-6 lg:col-span-6">
+      <div class="flex items-start gap-4">
+        <img
+          src="/logo/lgb.png"
+          alt="Estudio Jurídico Ana María Erazo"
+          class="hidden md:block h-28 w-auto opacity-95"
+          loading="eager"
+        />
+      </div>
+
+      <p class="mt-10 text-[11px] uppercase tracking-[0.28em] text-white/65">
+        Especialista en derecho de familia y sucesiones
+      </p>
+
+      <!-- Big headline (premium serif) -->
+      <div class="heroB__headline-wrap overflow-hidden">
+        <h1
+          class="heroB__headline mt-4 font-serif text-4xl leading-[1.05] sm:text-5xl md:leading-[0.92] tracking-[-0.015em] max-w-[12ch] lg:text-7xl"
+        >
+          Cuando más<br />
+          lo <span class="italic">necesitas</span>
+        </h1>
+      </div>
+
+      <p class="mt-6 max-w-md text-[14px] sm:text-[15px] leading-[1.65] text-white/75">
+        Especialista en derecho sucesorio, derecho de familia y derecho inmobiliario. Acompañamiento
+        humano, comunicación clara y foco en soluciones reales.
+      </p>
+
+      <div class="mt-9 flex flex-wrap items-center gap-4 animate-hero-cta">
+        <a
+          href="/contacto"
+          class="inline-flex items-center justify-center rounded-xl bg-[#CF6538] px-6 py-3 text-sm font-medium text-white shadow-[0_18px_45px_rgba(0,0,0,0.35)] transition hover:bg-[#b9552f] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+        >
+          Agendar consulta
+        </a>
+
+        <a
+          href="/#servicios"
+          class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-white/90 backdrop-blur-xl transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#CF6538]/70"
+        >
+          Ver servicios
+        </a>
+      </div>
+
+      <div class="mt-10 text-xs tracking-[0.18em] text-white/55">
+        Atención presencial y online · Región del Biobío
+      </div>
+
+      <!-- Mobile marquee keywords -->
+      <div class="relative mt-10 overflow-hidden md:hidden">
+        <div
+          class="heroB__marquee whitespace-nowrap font-serif text-[36px] tracking-tight text-white/25"
+        >
+          <span class="mr-12">Asesoría legal clara</span>
+          <span class="mr-12">Acompañamiento humano</span>
+          <span class="mr-12">Experiencia y confianza</span>
+          <span class="mr-12">Derecho de familia</span>
+          <span class="mr-12">Sucesiones</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right side: massive background editorial words + cutout silhouette -->
+    <div class="relative md:col-span-6 lg:col-span-6">
+      <!-- Massive typography (behind subject) -->
+      <div
+        class="heroB__bgtype hidden md:block pointer-events-none absolute -left-6 top-20 z-10 select-none font-serif text-[92px] leading-[0.92] tracking-[-0.01em] text-white/70 md:left-0 md:top-16 md:text-[110px] lg:text-[130px]"
+        aria-hidden="true"
+      >
+        ASESORÍA<br />
+        LEGAL<br />
+        CLARA Y<br />
+        CERCANA
+      </div>
+
+      <!-- Thin editorial frame lines -->
+      <div
+        class="pointer-events-none absolute right-6 top-24 z-0 hidden h-[58%] w-[70%] rounded-3xl border border-white/10 md:block"
+      >
+      </div>
+
+      <!-- Subject cutout -->
+      <div
+        class="heroB__subjectWrap pointer-events-none absolute bottom-[-60px] right-[-80px] z-0 w-[120%] sm:w-[70%] md:w-[90%] lg:w-[120%] opacity-30 animate-hero-subject"
+      >
+        <!-- <img
+          src="/images/hero-siluete.png"
+          alt="Ana María Erazo"
+          class="heroB__subject block h-auto w-full select-none"
+          loading="eager"
+          draggable="false"
+        /> -->
+      </div>
+
+      <!-- Small geometric sparkle / accent -->
+      <div
+        class="pointer-events-none absolute bottom-16 right-12 z-20 h-3 w-3 rotate-45 bg-white/70 opacity-80 md:bottom-20 md:right-16"
+      >
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom subtle line -->
+  <div class="pointer-events-none absolute bottom-0 left-0 right-0 h-px bg-white/10"></div>
+</section>
+
+<script>
+  // Subtle parallax (no libraries). Respects reduced motion.
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  if (!prefersReduced) {
+    const root = document.querySelector('.heroB')
+    const bgType = document.querySelector('.heroB__bgtype')
+    const subject = document.querySelector('.heroB__subjectWrap')
+
+    const clamp = (v, min, max) => Math.max(min, Math.min(max, v))
+
+    const onScroll = () => {
+      if (!root || !bgType || !subject) return
+      const r = root.getBoundingClientRect()
+      const vh = window.innerHeight || 1
+      // progress: 0 when top enters, 1 when leaving
+      const p = clamp((vh - r.top) / (vh + r.height), 0, 1)
+
+      // Different speeds for depth
+      const bgY = (p - 0.5) * 40 // px
+      const subY = (p - 0.5) * 18 // px
+
+      bgType.style.transform = `translate3d(0, ${bgY.toFixed(2)}px, 0)`
+      subject.style.transform = `translate3d(0, ${subY.toFixed(2)}px, 0)`
+    }
+
+    let ticking = false
+    const rafScroll = () => {
+      if (!ticking) {
+        ticking = true
+        requestAnimationFrame(() => {
+          onScroll()
+          ticking = false
+        })
+      }
+    }
+
+    window.addEventListener('scroll', rafScroll, { passive: true })
+    window.addEventListener('resize', rafScroll)
+    onScroll()
+  }
+</script>
+
+<style>
+  /* Inline SVG noise via feTurbulence (materiality, ~3% opacity set in markup) */
+  .heroB__noise {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    background-size: 300px 300px;
+  }
+
+  /* Subject “rim light” separation + cinematic contrast */
+  .heroB__subject {
+    filter: drop-shadow(0 24px 60px rgba(0, 0, 0, 0.5))
+      drop-shadow(-10px 0 22px rgba(255, 255, 255, 0.08));
+  }
+
+  /* Small hover micro-motion (only if user hovers the section) */
+  @media (prefers-reduced-motion: no-preference) {
+    .heroB:hover .heroB__subjectWrap {
+      transform: translate3d(0, -4px, 0);
+      transition: transform 800ms ease;
+    }
+  }
+
+  @keyframes heroFade {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes headlineReveal {
+    from {
+      transform: translateY(110%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes ctaPop {
+    from {
+      opacity: 0;
+      transform: scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes subjectEnter {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 0.3;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes watermarkFloat {
+    0% {
+      transform: translateX(-4px) skewX(-8deg);
+    }
+    50% {
+      transform: translateX(4px) skewX(-8deg);
+    }
+    100% {
+      transform: translateX(-4px) skewX(-8deg);
+    }
+  }
+
+  .animate-hero-fade {
+    animation: heroFade 600ms ease-out both;
+  }
+
+  .heroB__headline {
+    animation: headlineReveal 700ms cubic-bezier(0.22, 0.61, 0.36, 1) 250ms both;
+  }
+
+  .animate-hero-cta {
+    animation: ctaPop 300ms ease-out 700ms both;
+  }
+
+  .animate-hero-subject {
+    animation: subjectEnter 900ms ease-out 500ms both;
+  }
+
+  .heroB__watermark {
+    animation: watermarkFloat 14s linear infinite;
+  }
+
+  /* Mobile marquee animation */
+  @keyframes marqueeLeft {
+    from {
+      transform: translateX(0%);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .heroB__marquee {
+    animation: marqueeLeft 18s linear infinite;
+  }
+
+  @keyframes justiceFloat {
+    0% {
+      transform: translateY(-50%) translateX(0);
+    }
+    50% {
+      transform: translateY(-50%) translateX(12px);
+    }
+    100% {
+      transform: translateY(-50%) translateX(0);
+    }
+  }
+
+  .heroB__justice {
+    animation: justiceFloat 22s ease-in-out infinite;
+  }
+</style>

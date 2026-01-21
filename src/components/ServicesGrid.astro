@@ -5,33 +5,33 @@ const services = [
     title: 'Derecho Sucesorio',
     description:
       'Asesoría integral en posesiones efectivas, herencias, particiones y planificación patrimonial.',
-    href: '/servicios/sucesorio'
+    href: '/'
   },
   {
     id: '02',
     title: 'Derecho de Familia',
     description:
       'Divorcios de mutuo acuerdo y contenciosos, acuerdos, cuidado personal y alimentos.',
-    href: '/servicios/familia'
+    href: '/'
   },
   {
     id: '03',
     title: 'Derecho Inmobiliario',
     description:
       'Redacción y revisión de escrituras, compraventa de bienes raíces y regularizaciones.',
-    href: '/servicios/inmobiliario'
+    href: '/'
   }
 ]
 ---
 
 <section
   id="servicios"
-  class="relative bg-[#0E2A42] px-6 py-20 text-white md:px-10"
+  class="servicesGrid relative bg-[#0E2A42] px-6 py-20 text-white md:px-10"
   aria-label="Servicios jurídicos"
 >
   <div class="mx-auto max-w-7xl">
     <!-- Section header -->
-    <div class="mb-16 max-w-xl">
+    <div class="mb-16 max-w-xl servicesGrid__header">
       <p class="text-xs uppercase tracking-[0.28em] text-white/60">Servicios</p>
       <h2 class="mt-4 font-serif text-4xl leading-tight md:text-5xl">Áreas de práctica</h2>
     </div>
@@ -40,7 +40,7 @@ const services = [
     <div class="grid grid-cols-1 gap-14 md:grid-cols-2 lg:grid-cols-3">
       {
         services.map((service) => (
-          <article class="group relative">
+          <article class="group relative servicesGrid__item">
             <span class="block font-serif text-5xl text-white/15">{service.id}</span>
 
             <h3 class="mt-6 font-serif text-2xl">{service.title}</h3>
@@ -59,3 +59,35 @@ const services = [
     </div>
   </div>
 </section>
+<style>
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .servicesGrid__header {
+    animation: fadeUp 600ms ease-out both;
+  }
+
+  .servicesGrid__item {
+    opacity: 0;
+    animation: fadeUp 600ms ease-out both;
+    animation-delay: calc(var(--i, 0) * 120ms);
+  }
+
+  .servicesGrid__item:nth-child(1) {
+    --i: 1;
+  }
+  .servicesGrid__item:nth-child(2) {
+    --i: 2;
+  }
+  .servicesGrid__item:nth-child(3) {
+    --i: 3;
+  }
+</style>

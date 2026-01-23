@@ -1,11 +1,18 @@
 ---
 /**
- * Floating Contact Button
- * Placeholder version – no real redirect yet
+ * Floating Contact Button – WhatsApp
+ * Centralizado desde data/config
  */
+import { WHATSAPP_URL } from '../data/config'
 ---
 
-<a href="#" class="floating-contact" aria-label="Contacto por WhatsApp">
+<a
+  href={WHATSAPP_URL}
+  class="floating-contact"
+  aria-label="Contacto por WhatsApp"
+  target="_blank"
+  rel="noopener noreferrer"
+>
   <svg
     width="22"
     height="22"

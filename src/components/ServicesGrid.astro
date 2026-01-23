@@ -5,35 +5,41 @@ const services = [
     title: 'Derecho Sucesorio',
     description:
       'Asesoría integral en posesiones efectivas, herencias, particiones y planificación patrimonial.',
-    href: '/'
+    href: '/sucesorio'
   },
   {
     id: '02',
     title: 'Derecho de Familia',
     description:
       'Divorcios de mutuo acuerdo y contenciosos, acuerdos, cuidado personal y alimentos.',
-    href: '/'
+    href: '/familia'
   },
   {
     id: '03',
     title: 'Derecho Inmobiliario',
     description:
       'Redacción y revisión de escrituras, compraventa de bienes raíces y regularizaciones.',
-    href: '/'
+    href: '/inmobiliario'
   }
 ]
 ---
 
 <section
   id="servicios"
-  class="servicesGrid relative bg-[#0E2A42] px-6 py-20 text-white md:px-10"
+  class="servicesGrid relative bg-[var(--color-blue-700)] px-6 py-20 text-white md:px-10"
   aria-label="Servicios jurídicos"
 >
   <div class="mx-auto max-w-7xl">
     <!-- Section header -->
     <div class="mb-16 max-w-xl servicesGrid__header">
-      <p class="text-xs uppercase tracking-[0.28em] text-white/60">Servicios</p>
-      <h2 class="mt-4 font-serif text-4xl leading-tight md:text-5xl">Áreas de práctica</h2>
+      <p class="text-xs uppercase tracking-[0.28em] text-white/60">Servicios especializados</p>
+      <h2 class="mt-4 font-serif text-4xl leading-tight md:text-5xl">
+        Derecho sucesorio y áreas de atención jurídica
+      </h2>
+      <p class="mt-4 max-w-lg text-sm leading-relaxed text-white/75">
+        Atención integral y resultados satisfactorios, con foco en soluciones claras y
+        acompañamiento profesional en cada etapa del proceso.
+      </p>
     </div>
 
     <!-- Services list -->
@@ -49,7 +55,7 @@ const services = [
 
             <a
               href={service.href}
-              class="mt-6 inline-block text-sm tracking-wide text-[#CF6538] transition group-hover:underline"
+              class="mt-6 inline-block text-sm tracking-wide text-[var(--color-accent-500)] hover:text-[var(--color-accent-600)] transition group-hover:underline"
             >
               Ver servicio →
             </a>

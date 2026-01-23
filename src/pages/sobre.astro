@@ -1,0 +1,83 @@
+---
+import NavLayout from '../layout/NavLayout.astro'
+---
+
+<NavLayout
+  title="Sobre Ana María Erazo | Abogada con experiencia en derecho sucesorio y de familia"
+  description="Conoce la trayectoria profesional de Ana María Erazo, abogada con amplia experiencia en derecho sucesorio, de familia e inmobiliario, con un enfoque humano y resultados concretos."
+  canonical="https://www.estudiojuridicoanamariera.cl/sobre"
+>
+  <section class="relative overflow-hidden bg-[var(--color-blue-700)] text-white">
+    <!-- Background silhouette -->
+    <div
+      class="pointer-events-none absolute right-[-10%] top-1/2 z-0 hidden -translate-y-1/2 opacity-[0.08] md:block"
+    >
+      <img src="/images/siluetenbg2.png" alt="" class="w-[520px] max-w-none" draggable="false" />
+    </div>
+
+    <div class="relative z-10 mx-auto max-w-6xl px-6 py-20 md:py-28">
+      <p class="text-xs uppercase tracking-[0.28em] text-white/60">Sobre la abogada</p>
+
+      <h1 class="mt-4 max-w-3xl font-serif text-4xl leading-tight md:text-5xl">
+        Experiencia jurídica, cercanía humana y compromiso real con cada caso
+      </h1>
+
+      <div class="mt-10 grid grid-cols-1 gap-12 md:grid-cols-12">
+        <!-- Text content -->
+        <div class="md:col-span-7 text-[15px] leading-relaxed text-white/85 space-y-6">
+          <p>
+            Soy Ana María Erazo, abogada con una trayectoria profesional enfocada en entregar
+            asesoría jurídica clara, honesta y orientada a resultados. Mi ejercicio profesional se
+            ha desarrollado principalmente en las áreas de derecho sucesorio, derecho de familia y
+            derecho inmobiliario, acompañando a personas y familias en momentos especialmente
+            sensibles y decisivos.
+          </p>
+
+          <p>
+            Entiendo que detrás de cada consulta existe una historia personal, una preocupación
+            legítima y la necesidad de sentirse acompañado por una profesional que escuche, explique
+            y actúe con responsabilidad. Por ello, mi forma de trabajo se basa en la cercanía, la
+            comunicación transparente y el análisis riguroso de cada situación jurídica.
+          </p>
+
+          <p>
+            A lo largo de los años he asesorado a clientes en procesos de herencias, posesiones
+            efectivas, conflictos familiares, regularización de bienes y otras materias legales
+            complejas, siempre con el objetivo de alcanzar soluciones concretas y satisfactorias,
+            evitando innecesarios desgastes emocionales y económicos.
+          </p>
+
+          <p>
+            Mi compromiso es brindar una atención integral, donde cada cliente comprenda su
+            situación legal, sus alternativas y los pasos a seguir, generando la confianza necesaria
+            para avanzar con seguridad en cada etapa del proceso.
+          </p>
+        </div>
+
+        <!-- Highlight box -->
+        <div class="md:col-span-5">
+          <div class="rounded-2xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
+            <h2 class="font-serif text-xl">Atención integral y resultados satisfactorios</h2>
+
+            <ul class="mt-6 space-y-4 text-sm text-white/80">
+              <li>• Especialización en derecho sucesorio y de familia</li>
+              <li>• Acompañamiento cercano durante todo el proceso</li>
+              <li>• Comunicación clara y sin tecnicismos innecesarios</li>
+              <li>• Enfoque estratégico orientado a resultados reales</li>
+              <li>• Atención presencial y online</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-14">
+        <a
+          href="/#contacto"
+          class="inline-flex items-center justify-center rounded-xl bg-[var(--color-accent)] px-6 py-3 text-sm font-medium text-white transition hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+        >
+          Agendar consulta
+        </a>
+      </div>
+    </div>
+  </section>
+</NavLayout>

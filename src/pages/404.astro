@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layout/BaseLayout.astro'
+---
+
+<BaseLayout
+  title="Página no encontrada | Estudio Jurídico Ana María Erazo"
+  description="La página que buscas no existe o fue movida. Vuelve al inicio del Estudio Jurídico Ana María Erazo."
+  canonical="https://www.estudiojuridicoanamariera.cl/404"
+>
+  <section
+    class="relative isolate min-h-screen overflow-hidden bg-[var(--color-primary)] text-white"
+  >
+    <!-- Justice background -->
+    <div
+      class="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.08]"
+      aria-hidden="true"
+    >
+      <img
+        src="/images/hero-justice.png"
+        alt=""
+        class="w-[420px] max-w-none md:w-[520px]"
+        draggable="false"
+      />
+    </div>
+
+    <!-- Content -->
+    <div
+      class="relative z-10 mx-auto flex min-h-screen max-w-4xl flex-col items-center justify-center px-6 text-center"
+    >
+      <p class="mb-3 text-xs uppercase tracking-[0.3em] text-white/60">Error 404</p>
+
+      <h1 class="font-serif text-4xl leading-tight md:text-5xl">Esta página no existe</h1>
+
+      <p class="mt-6 max-w-md text-sm leading-relaxed text-white/75">
+        Es posible que el enlace esté incorrecto o que la página haya sido movida. Puedes volver al
+        inicio y continuar navegando desde allí.
+      </p>
+
+      <a
+        href="/"
+        class="mt-10 inline-flex items-center justify-center rounded-xl bg-[var(--color-accent)] px-7 py-3 text-sm font-medium text-white transition hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+      >
+        Volver al inicio
+      </a>
+    </div>
+
+    <!-- Bottom subtle line -->
+    <div class="pointer-events-none absolute bottom-0 left-0 right-0 h-px bg-white/10"></div>
+  </section>
+</BaseLayout>

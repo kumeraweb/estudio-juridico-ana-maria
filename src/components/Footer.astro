@@ -5,7 +5,10 @@
  */
 ---
 
-<footer class="relative bg-[#0B2236] px-6 py-20 text-white md:px-10" aria-label="Pie de página">
+<footer
+  class="relative bg-[var(--color-blue-900)] px-6 py-20 text-white md:px-10"
+  aria-label="Pie de página"
+>
   <div class="mx-auto grid max-w-7xl grid-cols-1 gap-14 md:grid-cols-12">
     <!-- Marca -->
     <div class="md:col-span-4">
@@ -16,7 +19,7 @@
         loading="lazy"
       />
 
-      <p class="mt-6 max-w-sm text-sm leading-relaxed text-white/70">
+      <p class="mt-6 max-w-sm text-sm leading-relaxed text-[var(--color-text-secondary)]">
         Estudio jurídico enfocado en entregar asesoría legal clara, cercana y estratégica, con
         atención personalizada y comunicación directa.
       </p>
@@ -24,9 +27,9 @@
 
     <!-- Navegación -->
     <div class="md:col-span-3">
-      <p class="text-xs uppercase tracking-[0.28em] text-white/60">Navegación</p>
+      <p class="text-xs uppercase tracking-[0.28em] text-[var(--color-text-muted)]">Navegación</p>
 
-      <ul class="mt-6 space-y-3 text-sm text-white/75">
+      <ul class="mt-6 space-y-3 text-sm text-[var(--color-text-secondary)]">
         <li><a href="/" class="hover:text-white">Inicio</a></li>
         <li><a href="/#servicios" class="hover:text-white">Servicios</a></li>
         <li><a href="/sobre" class="hover:text-white">Sobre la abogada</a></li>
@@ -36,24 +39,24 @@
 
     <!-- Contacto -->
     <div class="md:col-span-3">
-      <p class="text-xs uppercase tracking-[0.28em] text-white/60">Contacto</p>
+      <p class="text-xs uppercase tracking-[0.28em] text-[var(--color-text-muted)]">Contacto</p>
 
-      <ul class="mt-6 space-y-3 text-sm text-white/75">
+      <ul class="mt-6 space-y-3 text-sm text-[var(--color-text-secondary)]">
         <li>Región del Biobío, Chile</li>
-        <li>contacto@estudiojuridico.cl</li>
-        <li>+56 9 0000 0000</li>
+        <li>amerazoch@gmail.com</li>
+        <li>+56 9 2605 0846</li>
       </ul>
     </div>
 
     <!-- Redes -->
     <div class="md:col-span-2">
-      <p class="text-xs uppercase tracking-[0.28em] text-white/60">Redes</p>
+      <p class="text-xs uppercase tracking-[0.28em] text-[var(--color-text-muted)]">Redes</p>
 
       <div class="mt-6 flex items-center gap-4">
         <a
           href="/"
           aria-label="Facebook"
-          class="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/70 transition hover:text-white hover:border-white/30"
+          class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--color-border-glass)] text-[var(--color-text-secondary)] transition hover:text-white hover:border-[var(--color-border-glass)]"
         >
           <!-- Facebook icon -->
           <svg
@@ -71,7 +74,7 @@
         <a
           href="/"
           aria-label="Instagram"
-          class="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/70 transition hover:text-white hover:border-white/30"
+          class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--color-border-glass)] text-[var(--color-text-secondary)] transition hover:text-white hover:border-[var(--color-border-glass)]"
         >
           <!-- Instagram icon -->
           <svg
@@ -93,7 +96,7 @@
         <a
           href="/"
           aria-label="LinkedIn"
-          class="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/70 transition hover:text-white hover:border-white/30"
+          class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--color-border-glass)] text-[var(--color-text-secondary)] transition hover:text-white hover:border-[var(--color-border-glass)]"
         >
           <!-- LinkedIn icon -->
           <svg
@@ -113,8 +116,16 @@
 
   <!-- Bottom bar -->
   <div
-    class="mx-auto mt-20 max-w-7xl border-t border-white/10 pt-8 text-center text-xs tracking-wide text-white/45"
+    class="mx-auto mt-20 max-w-7xl border-t border-[var(--color-border-glass)] pt-8 text-center text-xs tracking-wide text-[var(--color-text-muted)]"
   >
-    © 2026 Estudio Jurídico Ana María Erazo · Todos los derechos reservados
+    © 2026 Estudio Jurídico Ana María Erazo · Todos los derechos reservados ·
+    <a
+      href="https://www.kumeraweb.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="underline decoration-white/30 underline-offset-4 transition hover:text-white"
+    >
+      Desarrollado por Kümera Web
+    </a>
   </div>
 </footer>

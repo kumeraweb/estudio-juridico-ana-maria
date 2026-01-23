@@ -1,5 +1,35 @@
 @import 'tailwindcss';
 
+/* ===============================
+   Brand Color System — Ana María Erazo
+   =============================== */
+:root {
+  /* Base neutrals */
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Brand blues (professional) */
+  --color-blue-900: #0e2a42; /* deep navy */
+  --color-blue-700: #1f3f5f; /* medium professional blue */
+  --color-blue-500: #355f88; /* luminous accent blue */
+
+  /* Brand accent (copper / terracotta) */
+  --color-accent-500: #cf6538;
+  --color-accent-600: #b9552f;
+
+  /* Text colors */
+  --color-text-primary: rgba(255, 255, 255, 0.92);
+  --color-text-secondary: rgba(255, 255, 255, 0.75);
+  --color-text-muted: rgba(255, 255, 255, 0.55);
+
+  /* Surfaces & borders */
+  --color-surface-glass: rgba(255, 255, 255, 0.06);
+  --color-border-glass: rgba(255, 255, 255, 0.12);
+
+  /* Effects */
+  --shadow-elevated: 0 18px 45px rgba(0, 0, 0, 0.35);
+}
+
 /* Fade-in editorial */
 .reveal {
   opacity: 0;

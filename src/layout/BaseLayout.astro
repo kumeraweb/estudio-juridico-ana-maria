@@ -30,7 +30,7 @@ const {
     <!-- SEO básico -->
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Ana María Erazo" />
-    <meta name="theme-color" content="#0E2A42" />
+    <meta name="theme-color" content="#1F3F5F" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
@@ -41,18 +41,47 @@ const {
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!--
-      ================================
-      Google Tag (gtag.js) – FUTURO
-      ================================
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXX');
-      </script>
-    -->
+    <!-- ================================
+         Google Tag (gtag.js)
+         Activar cuando se publique Ads
+         ================================ -->
+    {
+      /*
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    */
+    }
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LegalService",
+        "name": "Estudio Jurídico Ana María Erazo",
+        "url": "https://www.estudiojuridicoanamariera.cl/",
+        "logo": "https://www.estudiojuridicoanamariera.cl/logo/lgb.png",
+        "image": "https://www.estudiojuridicoanamariera.cl/logo/lgb.png",
+        "description": "Estudio jurídico especializado en derecho sucesorio, derecho de familia y derecho inmobiliario en la Región del Biobío.",
+        "areaServed": {
+          "@type": "AdministrativeArea",
+          "name": "Región del Biobío, Chile"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "Biobío",
+          "addressCountry": "CL"
+        },
+        "serviceType": ["Derecho Sucesorio", "Derecho de Familia", "Derecho Inmobiliario"],
+        "founder": {
+          "@type": "Person",
+          "name": "Ana María Erazo Chinchón"
+        }
+      }
+    </script>
   </head>
 
   <body>

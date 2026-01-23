@@ -15,7 +15,7 @@ const navItems = [
 ---
 
 <section
-  class="heroB relative isolate min-h-[88vh] md:min-h-[92vh] overflow-hidden bg-[#0E2A42] text-white"
+  class="heroB relative isolate min-h-[88vh] md:min-h-[92vh] overflow-hidden bg-[var(--color-blue-700)] text-white"
   aria-label="Hero principal"
 >
   <!-- Noise overlay (3%) -->
@@ -26,7 +26,7 @@ const navItems = [
 
   <!-- Subtle vignette / cinematic depth -->
   <div
-    class="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(1200px_600px_at_20%_20%,rgba(255,255,255,0.10),transparent_60%),radial-gradient(900px_500px_at_85%_30%,rgba(207,101,56,0.10),transparent_55%),linear-gradient(180deg,rgba(0,0,0,0.20),rgba(0,0,0,0.35))]"
+    class="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(1200px_600px_at_20%_20%,rgba(255,255,255,0.10),transparent_60%),radial-gradient(900px_500px_at_85%_30%,rgba(207,101,56,0.12),transparent_55%),linear-gradient(180deg,rgba(0,0,0,0.12),rgba(0,0,0,0.25))]"
   >
   </div>
 
@@ -56,7 +56,7 @@ const navItems = [
 
   <!-- Giant abstract "M" watermark -->
   <div
-    class="pointer-events-none absolute -right-24 -top-40 z-0 select-none font-serif text-[38rem] leading-none text-white/[0.04] [transform:skewX(-8deg)] heroB__watermark hidden md:block"
+    class="pointer-events-none absolute -right-24 -top-40 z-0 select-none font-serif text-[38rem] leading-none text-white/[0.03] [transform:skewX(-8deg)] heroB__watermark hidden md:block"
     aria-hidden="true"
   >
     AM
@@ -98,7 +98,7 @@ const navItems = [
         Menú
       </summary>
       <div
-        class="absolute right-0 mt-3 flex w-40 flex-col gap-3 rounded-2xl border border-white/10 bg-[#0E2A42]/90 px-4 py-4 backdrop-blur-xl"
+        class="absolute right-0 mt-3 flex w-40 flex-col gap-3 rounded-2xl border border-white/10 bg-[var(--color-blue-900)]/90 px-4 py-4 backdrop-blur-xl"
       >
         {
           navItems.map((i) => (
@@ -130,7 +130,7 @@ const navItems = [
       </div>
 
       <p class="mt-10 text-[11px] uppercase tracking-[0.28em] text-white/65">
-        Especialista en derecho de familia y sucesiones
+        Servicios especializados en derecho sucesorio
       </p>
 
       <!-- Big headline (premium serif) -->
@@ -145,19 +145,20 @@ const navItems = [
 
       <p class="mt-6 max-w-md text-[14px] sm:text-[15px] leading-[1.65] text-white/75">
         Especialista en derecho sucesorio, derecho de familia y derecho inmobiliario. Acompañamiento
-        humano, comunicación clara y foco en soluciones reales.
+        humano, comunicación clara y foco en soluciones reales. Atención integral y resultados
+        satisfactorios.
       </p>
 
       <div class="mt-9 flex flex-wrap items-center gap-4 animate-hero-cta">
         <a
-          href="/"
-          class="inline-flex items-center justify-center rounded-xl bg-[#CF6538] px-6 py-3 text-sm font-medium text-white shadow-[0_18px_45px_rgba(0,0,0,0.35)] transition hover:bg-[#b9552f] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+          href="/contacto"
+          class="inline-flex items-center justify-center rounded-xl bg-[var(--color-accent-500)] px-6 py-3 text-sm font-medium text-white shadow-[0_18px_45px_rgba(0,0,0,0.35)] transition hover:bg-[var(--color-accent-600)] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
         >
           Agendar consulta
         </a>
 
         <a
-          href="/"
+          href="/#servicios"
           class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-white/90 backdrop-blur-xl transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#CF6538]/70"
         >
           Ver servicios

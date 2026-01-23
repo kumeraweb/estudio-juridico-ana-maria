@@ -1,0 +1,113 @@
+---
+import NavLayout from '../layout/NavLayout.astro'
+---
+
+<NavLayout
+  title="Derecho Inmobiliario | Estudio Jurídico Ana María Erazo"
+  description="Asesoría legal en derecho inmobiliario: compraventa de propiedades, estudios de títulos, regularización y contratos. Atención clara y profesional en la Región del Biobío."
+  canonical="https://www.estudiojuridicoanamariera.cl/inmobiliario"
+>
+  <!-- HERO SERVICIO -->
+  <section class="relative isolate overflow-hidden bg-[var(--color-blue-700)] text-white">
+    <!-- textura / ruido -->
+    <div class="pointer-events-none absolute inset-0 opacity-[0.03] hero-noise"></div>
+
+    <!-- imagen justicia -->
+    <div
+      class="pointer-events-none absolute left-[-10%] top-1/2 hidden -translate-y-1/2 md:block"
+      aria-hidden="true"
+    >
+      <img
+        src="/images/hero-justice.png"
+        alt=""
+        class="w-[520px] max-w-none opacity-[0.08] blur-[1px]"
+        draggable="false"
+      />
+    </div>
+
+    <!-- mobile -->
+    <div class="pointer-events-none absolute left-[20%] top-[18%] md:hidden" aria-hidden="true">
+      <img
+        src="/images/hero-justice.png"
+        alt=""
+        class="w-[100vw] max-w-[360px] opacity-[0.06] blur-[1.5px]"
+      />
+    </div>
+
+    <div class="relative mx-auto max-w-7xl px-6 py-24 md:py-28">
+      <p class="text-xs uppercase tracking-[0.28em] text-white/65">Servicios especializados</p>
+
+      <h1 class="mt-4 max-w-3xl font-serif text-4xl leading-tight md:text-5xl lg:text-6xl">
+        Derecho Inmobiliario
+      </h1>
+
+      <p class="mt-6 max-w-2xl text-white/80 leading-relaxed">
+        Acompañamiento legal en operaciones inmobiliarias, orientado a resguardar tu patrimonio,
+        prevenir riesgos y asegurar decisiones jurídicas sólidas y bien fundamentadas.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTENIDO -->
+  <section class="bg-white text-slate-800">
+    <div class="mx-auto max-w-7xl grid gap-14 px-6 py-20 md:grid-cols-3">
+      <!-- TEXTO PRINCIPAL -->
+      <div class="space-y-6 md:col-span-2">
+        <h2 class="font-serif text-2xl md:text-3xl">
+          Seguridad jurídica en cada operación inmobiliaria
+        </h2>
+
+        <p>
+          Las decisiones inmobiliarias involucran montos relevantes y efectos a largo plazo. Contar
+          con asesoría legal especializada permite identificar riesgos, revisar antecedentes y
+          garantizar que cada acto jurídico se ajuste a la normativa vigente.
+        </p>
+
+        <p>
+          Brindo acompañamiento legal en procesos de compraventa, regularización y análisis de
+          propiedades, revisando títulos, contratos y antecedentes jurídicos con un enfoque
+          preventivo y claro.
+        </p>
+
+        <p>
+          Cada caso es abordado de manera personalizada, considerando la situación del inmueble, las
+          partes involucradas y los objetivos del cliente, entregando orientación precisa y
+          soluciones jurídicas confiables.
+        </p>
+
+        <h3 class="mt-10 font-serif text-xl">Áreas de atención en derecho inmobiliario</h3>
+
+        <ul class="mt-4 list-inside list-disc space-y-3">
+          <li>Compraventa de bienes raíces</li>
+          <li>Estudios de títulos</li>
+          <li>Redacción y revisión de contratos inmobiliarios</li>
+          <li>Regularización de propiedades</li>
+          <li>Promesas de compraventa y análisis legal previo</li>
+        </ul>
+      </div>
+
+      <!-- CTA / CONFIANZA -->
+      <aside class="space-y-6 rounded-2xl bg-[var(--color-surface)] p-8">
+        <p class="text-sm uppercase tracking-wide text-[var(--color-muted)]">
+          Acompañamiento profesional
+        </p>
+
+        <p class="leading-relaxed">
+          Si estás evaluando una operación inmobiliaria o necesitas orientación legal sobre una
+          propiedad, puedo ayudarte a analizar tu caso con claridad y respaldo jurídico.
+        </p>
+
+        <a
+          href="/contacto"
+          class="inline-flex items-center justify-center rounded-xl bg-[var(--color-accent-500)] px-6 py-3 text-sm font-medium text-white transition hover:bg-[var(--color-accent-600)]"
+        >
+          Solicitar orientación
+        </a>
+
+        <p class="text-xs text-[var(--color-muted)]">
+          Atención presencial y online · Región del Biobío
+        </p>
+      </aside>
+    </div>
+  </section>
+</NavLayout>

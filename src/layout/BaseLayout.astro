@@ -27,32 +27,28 @@ const {
 
     {canonical && <link rel="canonical" href={canonical} />}
 
-    
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Ana María Erazo" />
     <meta name="theme-color" content="#1F3F5F" />
 
-    
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:locale" content="es_CL" />
 
-    
     <meta name="twitter:card" content="summary_large_image" />
 
-    
-    {
-      /*
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX');
+    <!-- Google tag (gtag.js) -->
+    <script is:inline src="https://www.googletagmanager.com/gtag/js?id=AW-17909837199"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+
+      gtag('config', 'AW-17909837199')
     </script>
-    */
-    }
 
     <script type="application/ld+json">
       {

@@ -102,17 +102,17 @@ import { CONTACT_CONFIG, WHATSAPP_URL } from '../data/config'
 
             <div class="mt-4 flex gap-3">
               <a
-                href={`https://wa.me/${WHATSAPP_URL}`}
+                href={WHATSAPP_URL}
                 class="inline-flex flex-1 items-center justify-center rounded-lg border border-white/30 px-4 py-2 text-sm text-white hover:bg-white/10"
               >
                 WhatsApp
               </a>
 
               <a
-                href={`tel:${CONTACT_CONFIG.phone}`}
+                href={`tel:${CONTACT_CONFIG.phone.raw}`}
                 class="inline-flex flex-1 items-center justify-center rounded-lg border border-white/30 px-4 py-2 text-sm text-white hover:bg-white/10"
               >
-                Llamar
+                Llamar {CONTACT_CONFIG.phone.display}
               </a>
             </div>
           </div>

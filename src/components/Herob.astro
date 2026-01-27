@@ -18,19 +18,19 @@ const navItems = [
   class="heroB relative isolate min-h-[88vh] md:min-h-[92vh] overflow-hidden bg-[var(--color-blue-700)] text-white"
   aria-label="Hero principal"
 >
-  <!-- Noise overlay (3%) -->
+  
   <div
     class="pointer-events-none absolute inset-0 z-0 opacity-[0.03] mix-blend-overlay heroB__noise"
   >
   </div>
 
-  <!-- Subtle vignette / cinematic depth -->
+  
   <div
     class="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(1200px_600px_at_20%_20%,rgba(255,255,255,0.10),transparent_60%),radial-gradient(900px_500px_at_85%_30%,rgba(207,101,56,0.12),transparent_55%),linear-gradient(180deg,rgba(0,0,0,0.12),rgba(0,0,0,0.25))]"
   >
   </div>
 
-  <!-- Justice scale background -->
+  
   <div
     class="pointer-events-none absolute left-[-12%] top-1/2 z-0 hidden md:block heroB__justice"
     aria-hidden="true"
@@ -43,7 +43,7 @@ const navItems = [
     />
   </div>
 
-  <!-- Justice scale background (mobile) -->
+  
   <div
     class="pointer-events-none absolute left-[25%] top-[18%] z-0 md:hidden heroB__justice-mobile"
     aria-hidden="true"
@@ -54,7 +54,7 @@ const navItems = [
     />
   </div>
 
-  <!-- Giant abstract "M" watermark -->
+  
   <div
     class="pointer-events-none absolute -right-24 -top-40 z-0 select-none font-serif text-[38rem] leading-none text-white/[0.03] [transform:skewX(-8deg)] heroB__watermark hidden md:block"
     aria-hidden="true"
@@ -62,9 +62,9 @@ const navItems = [
     AM
   </div>
 
-  <!-- Responsive Header -->
+  
   <div class="absolute top-4 left-4 right-4 z-40 flex items-center justify-between">
-    <!-- Logo -->
+    
     <div class="flex items-center gap-3">
       <img
         src="/logo/lgb.png"
@@ -73,7 +73,7 @@ const navItems = [
       />
     </div>
 
-    <!-- Desktop nav -->
+    
     <nav
       class="hidden md:flex items-center gap-7 rounded-2xl border border-white/10 bg-white/5 px-6 py-3 backdrop-blur-xl"
       aria-label="Navegación principal"
@@ -90,7 +90,7 @@ const navItems = [
       }
     </nav>
 
-    <!-- Mobile menu -->
+    
     <details class="relative md:hidden">
       <summary
         class="list-none cursor-pointer rounded-xl border border-white/15 bg-white/5 px-4 py-2 text-xs tracking-wide text-white/90 backdrop-blur-xl"
@@ -114,11 +114,11 @@ const navItems = [
     </details>
   </div>
 
-  <!-- Content wrapper -->
+  
   <div
     class="relative z-10 mx-auto grid max-w-7xl grid-cols-1 gap-12 px-6 pb-10 pt-24 md:grid-cols-12 md:gap-10 md:px-10 md:pb-20 md:pt-28 animate-hero-fade"
   >
-    <!-- Left editorial copy -->
+    
     <div class="md:col-span-6 lg:col-span-6">
       <div class="flex items-start gap-4">
         <img
@@ -133,7 +133,7 @@ const navItems = [
         Servicios especializados en derecho sucesorio
       </p>
 
-      <!-- Big headline (premium serif) -->
+      
       <div class="heroB__headline-wrap overflow-hidden">
         <h1
           class="heroB__headline mt-4 font-serif text-4xl leading-[1.05] sm:text-5xl md:leading-[0.92] tracking-[-0.015em] max-w-[12ch] lg:text-7xl"
@@ -169,7 +169,7 @@ const navItems = [
         Atención presencial y online · Región del Biobío
       </div>
 
-      <!-- Mobile marquee keywords -->
+      
       <div class="relative mt-10 overflow-hidden md:hidden">
         <div
           class="heroB__marquee whitespace-nowrap font-serif text-[36px] tracking-tight text-white/25"
@@ -183,9 +183,9 @@ const navItems = [
       </div>
     </div>
 
-    <!-- Right side: massive background editorial words + cutout silhouette -->
+    
     <div class="relative md:col-span-6 lg:col-span-6">
-      <!-- Massive typography (behind subject) -->
+      
       <div
         class="heroB__bgtype hidden md:block pointer-events-none absolute -left-6 top-20 z-10 select-none font-serif text-[92px] leading-[0.92] tracking-[-0.01em] text-white/70 md:left-0 md:top-16 md:text-[110px] lg:text-[130px]"
         aria-hidden="true"
@@ -196,26 +196,20 @@ const navItems = [
         CERCANA
       </div>
 
-      <!-- Thin editorial frame lines -->
+      
       <div
         class="pointer-events-none absolute right-6 top-24 z-0 hidden h-[58%] w-[70%] rounded-3xl border border-white/10 md:block"
       >
       </div>
 
-      <!-- Subject cutout -->
+      
       <div
         class="heroB__subjectWrap pointer-events-none absolute bottom-[-60px] right-[-80px] z-0 w-[120%] sm:w-[70%] md:w-[90%] lg:w-[120%] opacity-30 animate-hero-subject"
       >
-        <!-- <img
-          src="/images/hero-siluete.png"
-          alt="Ana María Erazo"
-          class="heroB__subject block h-auto w-full select-none"
-          loading="eager"
-          draggable="false"
-        /> -->
+        
       </div>
 
-      <!-- Small geometric sparkle / accent -->
+      
       <div
         class="pointer-events-none absolute bottom-16 right-12 z-20 h-3 w-3 rotate-45 bg-white/70 opacity-80 md:bottom-20 md:right-16"
       >
@@ -223,7 +217,7 @@ const navItems = [
     </div>
   </div>
 
-  <!-- Bottom subtle line -->
+  
   <div class="pointer-events-none absolute bottom-0 left-0 right-0 h-px bg-white/10"></div>
 </section>
 

@@ -1,7 +1,7 @@
 ---
 /**
  * CTA Section — Editorial / Conversion
- * Nota: CTA visual únicamente, sin funcionalidad por ahora.
+ * Nota: formulario conectado a Formspree.
  */
 ---
 
@@ -11,38 +11,54 @@
   aria-label="Llamado a la acción"
 >
   <div class="mx-auto max-w-5xl text-center">
-    <!-- Eyebrow -->
+    
     <p class="text-xs uppercase tracking-[0.28em] text-white/60">Contacto</p>
 
-    <!-- Headline -->
+    
     <h2 class="mt-6 font-serif text-4xl leading-tight md:text-5xl">Agenda una consulta</h2>
 
-    <!-- Copy -->
+    
     <p class="mx-auto mt-8 max-w-xl text-sm leading-relaxed text-white/75">
       Si necesitas orientación jurídica clara y un acompañamiento cercano, puedes contactarme para
       agendar una primera consulta y evaluar tu caso.
     </p>
 
-    <!-- Form (visual only) -->
+    
     <form
+      id="cta-form"
       class="mx-auto mt-14 grid max-w-3xl grid-cols-1 gap-6 md:grid-cols-2"
-      onsubmit="return false"
+      action={import.meta.env.PUBLIC_FORMSPREE_ENDPOINT}
+      method="POST"
     >
+      <label for="cta-name" class="sr-only">Nombre completo</label>
       <input
+        id="cta-name"
         type="text"
+        name="name"
+        autocomplete="name"
+        required
         placeholder="Nombre completo"
         class="rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/40 backdrop-blur-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent-500)]/70"
       />
 
+      <label for="cta-email" class="sr-only">Correo electrónico</label>
       <input
+        id="cta-email"
         type="email"
+        name="email"
+        autocomplete="email"
+        required
         placeholder="Correo electrónico"
         class="rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/40 backdrop-blur-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent-500)]/70"
       />
 
+      <label for="cta-message" class="sr-only">Mensaje</label>
       <textarea
+        id="cta-message"
+        name="message"
         placeholder="Cuéntame brevemente tu caso"
         rows="4"
+        required
         class="md:col-span-2 rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-white placeholder-white/40 backdrop-blur-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent-500)]/70"
       ></textarea>
 
@@ -56,9 +72,52 @@
       </div>
     </form>
 
-    <!-- Nota -->
+    <p
+      id="cta-status"
+      class="mt-6 text-sm text-white/80"
+      role="status"
+      aria-live="polite"
+      hidden
+    ></p>
+
+    
     <p class="mt-6 text-xs tracking-wide text-white/45">
       El envío del formulario no genera compromiso inmediato.
     </p>
   </div>
 </section>
+
+<script>
+  const form = document.querySelector("#cta-form");
+  const status = document.querySelector("#cta-status");
+
+  if (form instanceof HTMLFormElement && status instanceof HTMLElement) {
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      status.hidden = false;
+      status.textContent = "Enviando...";
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json",
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Formspree error");
+        }
+
+        form.reset();
+        status.textContent = "¡Listo! Tu solicitud fue enviada.";
+      } catch (error) {
+        status.textContent =
+          "No se pudo enviar. Intenta nuevamente o escríbenos por WhatsApp.";
+      }
+    });
+  }
+</script>

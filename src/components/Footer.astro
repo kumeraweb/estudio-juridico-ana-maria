@@ -3,6 +3,7 @@
  * Footer — Editorial / Boutique
  * Contenido referencial.
  */
+import { CONTACT_CONFIG, MAILTO_URL } from '../data/config'
 ---
 
 <footer
@@ -10,7 +11,7 @@
   aria-label="Pie de página"
 >
   <div class="mx-auto grid max-w-7xl grid-cols-1 gap-14 md:grid-cols-12">
-    <!-- Marca -->
+    
     <div class="md:col-span-4">
       <img
         src="/logo/lgb.png"
@@ -25,7 +26,7 @@
       </p>
     </div>
 
-    <!-- Navegación -->
+    
     <div class="md:col-span-3">
       <p class="text-xs uppercase tracking-[0.28em] text-[var(--color-text-muted)]">Navegación</p>
 
@@ -37,84 +38,30 @@
       </ul>
     </div>
 
-    <!-- Contacto -->
+    
     <div class="md:col-span-3">
       <p class="text-xs uppercase tracking-[0.28em] text-[var(--color-text-muted)]">Contacto</p>
 
       <ul class="mt-6 space-y-3 text-sm text-[var(--color-text-secondary)]">
         <li>Región del Biobío, Chile</li>
-        <li>amerazoch@gmail.com</li>
-        <li>+56 9 2605 0846</li>
+        <li>
+          <a href={MAILTO_URL} class="hover:text-white">
+            {CONTACT_CONFIG.email}
+          </a>
+        </li>
+        <li>
+          <a href={`tel:${CONTACT_CONFIG.phone.raw}`} class="hover:text-white">
+            {CONTACT_CONFIG.phone.display}
+          </a>
+        </li>
       </ul>
     </div>
 
-    <!-- Redes -->
-    <div class="md:col-span-2">
-      <p class="text-xs uppercase tracking-[0.28em] text-[var(--color-text-muted)]">Redes</p>
-
-      <div class="mt-6 flex items-center gap-4">
-        <a
-          href="/"
-          aria-label="Facebook"
-          class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--color-border-glass)] text-[var(--color-text-secondary)] transition hover:text-white hover:border-[var(--color-border-glass)]"
-        >
-          <!-- Facebook icon -->
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            class="h-5 w-5"
-          >
-            <path
-              d="M22 12a10 10 0 10-11.5 9.9v-7h-2v-3h2v-2.3c0-2 1.2-3.1 3-3.1.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.3l-.4 3h-1.9v7A10 10 0 0022 12z"
-            ></path>
-          </svg>
-        </a>
-
-        <a
-          href="/"
-          aria-label="Instagram"
-          class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--color-border-glass)] text-[var(--color-text-secondary)] transition hover:text-white hover:border-[var(--color-border-glass)]"
-        >
-          <!-- Instagram icon -->
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            class="h-5 w-5"
-          >
-            <path
-              d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 2 .3 2.5.5.6.2 1 .5 1.5 1 .5.5.8.9 1 1.5.2.5.4 1.3.5 2.5.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.3 2-.5 2.5-.2.6-.5 1-1 1.5-.5.5-.9.8-1.5 1-.5.2-1.3.4-2.5.5-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-2-.3-2.5-.5-.6-.2-1-.5-1.5-1-.5-.5-.8-.9-1-1.5-.2-.5-.4-1.3-.5-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.3-2 .5-2.5.2-.6.5-1 1-1.5.5-.5.9-.8 1.5-1 .5-.2 1.3-.4 2.5-.5C8.4 2.2 8.8 2.2 12 2.2zm0 2.1c-3.1 0-3.5 0-4.7.1-1 .1-1.6.2-2 .4-.5.2-.8.4-1.2.8-.4.4-.6.7-.8 1.2-.2.4-.3 1-.4 2-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1 .2 1.6.4 2 .2.5.4.8.8 1.2.4.4.7.6 1.2.8.4.2 1 .3 2 .4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1-.1 1.6-.2 2-.4.5-.2.8-.4 1.2-.8.4-.4.6-.7.8-1.2.2-.4.3-1 .4-2 .1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1-.2-1.6-.4-2-.2-.5-.4-.8-.8-1.2-.4-.4-.7-.6-1.2-.8-.4-.2-1-.3-2-.4-1.2-.1-1.6-.1-4.7-.1z"
-            ></path>
-            <path
-              d="M12 6.4a5.6 5.6 0 100 11.2 5.6 5.6 0 000-11.2zm0 9.2a3.6 3.6 0 110-7.2 3.6 3.6 0 010 7.2z"
-            ></path>
-            <circle cx="17.8" cy="6.2" r="1.3"></circle>
-          </svg>
-        </a>
-
-        <a
-          href="/"
-          aria-label="LinkedIn"
-          class="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--color-border-glass)] text-[var(--color-text-secondary)] transition hover:text-white hover:border-[var(--color-border-glass)]"
-        >
-          <!-- LinkedIn icon -->
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            class="h-5 w-5"
-          >
-            <path
-              d="M4.98 3.5a2.48 2.48 0 11.02 4.96 2.48 2.48 0 01-.02-4.96zM3 8.98h4v12H3zM9 8.98h3.8v1.64h.05c.53-1 1.84-2.05 3.8-2.05 4.06 0 4.8 2.67 4.8 6.14v6.27h-4v-5.56c0-1.33-.02-3.05-1.86-3.05-1.86 0-2.15 1.45-2.15 2.95v5.66H9z"
-            ></path>
-          </svg>
-        </a>
-      </div>
-    </div>
+    
+    <div class="md:col-span-2"></div>
   </div>
 
-  <!-- Bottom bar -->
+  
   <div
     class="mx-auto mt-20 max-w-7xl border-t border-[var(--color-border-glass)] pt-8 text-center text-xs tracking-wide text-[var(--color-text-muted)]"
   >

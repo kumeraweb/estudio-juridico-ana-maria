@@ -8,10 +8,10 @@ import { CONTACT_CONFIG, WHATSAPP_URL } from '../data/config'
   description="Contacto directo con la abogada Ana María Erazo. Orientación legal clara y profesional en derecho sucesorio, familia e inmobiliario."
   canonical="https://www.estudiojuridicoanamariera.cl/contacto"
 >
-  <!-- CONTACT CONTENT -->
+  
   <section class="relative overflow-hidden bg-[var(--color-blue-700)] text-white">
     <div class="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 py-20 md:grid-cols-12">
-      <!-- LEFT COLUMN -->
+      
       <div class="relative md:col-span-6">
         <h1 class="font-serif text-4xl md:text-5xl tracking-tight">
           Hablemos de tu situación legal
@@ -28,51 +28,75 @@ import { CONTACT_CONFIG, WHATSAPP_URL } from '../data/config'
         />
       </div>
 
-      <!-- RIGHT COLUMN -->
+      
       <div class="md:col-span-6">
         <div class="rounded-2xl border border-white/15 bg-white/5 p-8 backdrop-blur-xl">
           <h2 class="font-serif text-xl text-white">Envíame tu consulta</h2>
 
-          <form class="mt-6 space-y-5">
+          <form
+            id="contact-form"
+            class="mt-6 space-y-5"
+            action={import.meta.env.PUBLIC_FORMSPREE_ENDPOINT}
+            method="POST"
+          >
             <div>
-              <label class="block text-sm text-white">Nombre</label>
+              <label for="contact-name" class="block text-sm text-white">Nombre</label>
               <input
+                id="contact-name"
                 type="text"
+                name="name"
+                autocomplete="name"
+                required
                 class="mt-1 w-full rounded-lg border border-white/30 bg-white/10 px-4 py-2 text-sm text-white placeholder-white/70 focus:border-[var(--color-accent-500)] focus:outline-none"
                 placeholder="Tu nombre"
               />
             </div>
 
             <div>
-              <label class="block text-sm text-white">Teléfono o correo</label>
+              <label for="contact-info" class="block text-sm text-white">Teléfono o correo</label>
               <input
+                id="contact-info"
                 type="text"
+                name="contact"
+                autocomplete="tel"
+                required
                 class="mt-1 w-full rounded-lg border border-white/30 bg-white/10 px-4 py-2 text-sm text-white placeholder-white/70 focus:border-[var(--color-accent-500)] focus:outline-none"
                 placeholder="Ej: +56 9 1234 5678"
               />
             </div>
 
             <div>
-              <label class="block text-sm text-white">Mensaje</label>
+              <label for="contact-message" class="block text-sm text-white">Mensaje</label>
               <textarea
+                id="contact-message"
+                name="message"
                 rows="4"
+                required
                 class="mt-1 w-full rounded-lg border border-white/30 bg-white/10 px-4 py-2 text-sm text-white placeholder-white/70 focus:border-[var(--color-accent-500)] focus:outline-none"
                 placeholder="Cuéntame brevemente tu situación"></textarea>
             </div>
 
             <button
-              type="button"
+              type="submit"
               class="mt-4 inline-flex w-full items-center justify-center rounded-xl bg-[var(--color-accent-500)] px-6 py-3 text-sm font-medium text-white transition hover:opacity-90"
             >
               Enviar consulta
             </button>
+
+            <p
+              id="contact-status"
+              class="mt-3 text-sm text-white/80"
+              role="status"
+              aria-live="polite"
+              hidden
+            ></p>
 
             <p class="mt-3 text-xs text-white/75">
               La información enviada es confidencial. Responderé a la brevedad.
             </p>
           </form>
 
-          <!-- Direct contact -->
+          
           <div class="mt-8 border-t border-white/15 pt-6">
             <p class="text-sm text-white/75">¿Prefieres un contacto directo?</p>
 
@@ -97,3 +121,38 @@ import { CONTACT_CONFIG, WHATSAPP_URL } from '../data/config'
     </div>
   </section>
 </NavLayout>
+
+<script>
+  const form = document.querySelector("#contact-form");
+  const status = document.querySelector("#contact-status");
+
+  if (form instanceof HTMLFormElement && status instanceof HTMLElement) {
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      status.hidden = false;
+      status.textContent = "Enviando...";
+
+      try {
+        const formData = new FormData(form);
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: {
+            Accept: "application/json",
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Formspree error");
+        }
+
+        form.reset();
+        status.textContent = "¡Listo! Tu consulta fue enviada.";
+      } catch (error) {
+        status.textContent =
+          "No se pudo enviar. Intenta nuevamente o escríbenos por WhatsApp.";
+      }
+    });
+  }
+</script>

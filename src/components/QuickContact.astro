@@ -1,0 +1,39 @@
+---
+import { CONTACT_CONFIG, WHATSAPP_URL } from '../data/config'
+---
+
+<section
+  class="hidden bg-[var(--color-blue-700)] px-6 py-8 text-white md:block md:px-10"
+  aria-label="Contacto rápido"
+>
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-2xl border border-white/15 bg-white/5 p-6 backdrop-blur-xl">
+    <p class="text-sm text-white/85">Contacto rápido</p>
+
+    <div class="flex flex-wrap gap-3">
+      <a
+        href={WHATSAPP_URL}
+        class="inline-flex items-center justify-center rounded-lg bg-[var(--color-accent-500)] px-4 py-2 text-sm font-medium text-white transition hover:bg-[var(--color-accent-600)]"
+        data-track-contact="whatsapp"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        WhatsApp ahora
+      </a>
+
+      <a
+        href={`tel:${CONTACT_CONFIG.phone.raw}`}
+        class="inline-flex items-center justify-center rounded-lg border border-white/25 px-4 py-2 text-sm text-white transition hover:bg-white/10"
+        data-track-contact="phone"
+      >
+        Llamar ahora
+      </a>
+
+      <a
+        href="/#contacto"
+        class="inline-flex items-center justify-center rounded-lg border border-white/25 px-4 py-2 text-sm text-white transition hover:bg-white/10"
+      >
+        Ir al formulario
+      </a>
+    </div>
+  </div>
+</section>

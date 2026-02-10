@@ -1,0 +1,64 @@
+<script is:inline>
+  (() => {
+    const map = {
+      whatsapp: 'contact_whatsapp_click',
+      phone: 'contact_phone_click'
+    }
+
+    function gtag_report_conversion(url, target) {
+      const callback = function () {
+        if (typeof url !== 'undefined') {
+          if (target === '_blank') {
+            window.open(url, '_blank', 'noopener,noreferrer')
+          } else {
+            window.location.href = url
+          }
+        }
+      }
+
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'conversion', {
+          send_to: 'AW-17912967968/lkHiCLrsqvYbEKDmyN1C',
+          value: 1.0,
+          currency: 'CLP',
+          event_callback: callback
+        })
+        window.setTimeout(callback, 900)
+      } else {
+        callback()
+      }
+      return false
+    }
+
+    window.gtag_report_conversion = gtag_report_conversion
+
+    window.trackContactEvent = (eventName, params = {}) => {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', eventName, params)
+      }
+    }
+
+    document.addEventListener('click', (event) => {
+      const target = event.target
+      if (!(target instanceof Element)) return
+
+      const link = target.closest('[data-track-contact]')
+      if (!(link instanceof HTMLElement)) return
+
+      const contactType = link.dataset.trackContact
+      const eventName = contactType ? map[contactType] : undefined
+      if (!eventName) return
+
+      event.preventDefault()
+
+      window.trackContactEvent(eventName, {
+        contact_type: contactType,
+        link_text: (link.textContent || '').trim().slice(0, 64)
+      })
+
+      const href = link.getAttribute('href') || undefined
+      const target = link.getAttribute('target') || undefined
+      gtag_report_conversion(href, target)
+    })
+  })()
+</script>

@@ -22,7 +22,7 @@ import { CONTACT_CONFIG, WHATSAPP_URL } from '../data/config'
 
         <img
           src="/images/law-avatarb.png"
-          alt="Imagen referencial"
+          alt="Ana María Erazo"
           class="pointer-events-none absolute -bottom-10 right-0 hidden w-[70%] opacity-8 md:block"
           style="opacity: 0.08;"
         />
@@ -31,6 +31,25 @@ import { CONTACT_CONFIG, WHATSAPP_URL } from '../data/config'
       
       <div class="md:col-span-6">
         <div class="rounded-2xl border border-white/15 bg-white/5 p-8 backdrop-blur-xl">
+          <div class="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <a
+              href={`tel:${CONTACT_CONFIG.phone.raw}`}
+              class="inline-flex w-full items-center justify-center rounded-lg bg-[var(--color-accent-500)] px-4 py-3 text-sm font-medium text-white transition hover:opacity-90"
+              data-track-contact="phone"
+            >
+              Llamar ahora {CONTACT_CONFIG.phone.display}
+            </a>
+            <a
+              href={WHATSAPP_URL}
+              class="inline-flex w-full items-center justify-center rounded-lg border border-white/30 px-4 py-3 text-sm text-white hover:bg-white/10"
+              data-track-contact="whatsapp"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              WhatsApp directo
+            </a>
+          </div>
+
           <h2 class="font-serif text-xl text-white">Envíame tu consulta</h2>
 
           <form
@@ -53,13 +72,25 @@ import { CONTACT_CONFIG, WHATSAPP_URL } from '../data/config'
             </div>
 
             <div>
-              <label for="contact-info" class="block text-sm text-white">Teléfono o correo</label>
+              <label for="contact-email" class="block text-sm text-white">Correo electrónico</label>
               <input
-                id="contact-info"
-                type="text"
-                name="contact"
-                autocomplete="tel"
+                id="contact-email"
+                type="email"
+                name="_replyto"
+                autocomplete="email"
                 required
+                class="mt-1 w-full rounded-lg border border-white/30 bg-white/10 px-4 py-2 text-sm text-white placeholder-white/70 focus:border-[var(--color-accent-500)] focus:outline-none"
+                placeholder="nombre@correo.cl"
+              />
+            </div>
+
+            <div>
+              <label for="contact-phone" class="block text-sm text-white">Teléfono (opcional)</label>
+              <input
+                id="contact-phone"
+                type="tel"
+                name="phone"
+                autocomplete="tel"
                 class="mt-1 w-full rounded-lg border border-white/30 bg-white/10 px-4 py-2 text-sm text-white placeholder-white/70 focus:border-[var(--color-accent-500)] focus:outline-none"
                 placeholder="Ej: +56 9 1234 5678"
               />
@@ -80,7 +111,7 @@ import { CONTACT_CONFIG, WHATSAPP_URL } from '../data/config'
               type="submit"
               class="mt-4 inline-flex w-full items-center justify-center rounded-xl bg-[var(--color-accent-500)] px-6 py-3 text-sm font-medium text-white transition hover:opacity-90"
             >
-              Enviar consulta
+              Enviar caso
             </button>
 
             <p
@@ -104,6 +135,9 @@ import { CONTACT_CONFIG, WHATSAPP_URL } from '../data/config'
               <a
                 href={WHATSAPP_URL}
                 class="inline-flex flex-1 items-center justify-center rounded-lg border border-white/30 px-4 py-2 text-sm text-white hover:bg-white/10"
+                data-track-contact="whatsapp"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 WhatsApp
               </a>
@@ -111,6 +145,7 @@ import { CONTACT_CONFIG, WHATSAPP_URL } from '../data/config'
               <a
                 href={`tel:${CONTACT_CONFIG.phone.raw}`}
                 class="inline-flex flex-1 items-center justify-center rounded-lg border border-white/30 px-4 py-2 text-sm text-white hover:bg-white/10"
+                data-track-contact="phone"
               >
                 Llamar {CONTACT_CONFIG.phone.display}
               </a>
@@ -125,10 +160,25 @@ import { CONTACT_CONFIG, WHATSAPP_URL } from '../data/config'
 <script>
   const form = document.querySelector("#contact-form");
   const status = document.querySelector("#contact-status");
+  const submitButton = form?.querySelector('button[type="submit"]');
 
-  if (form instanceof HTMLFormElement && status instanceof HTMLElement) {
+  if (form instanceof HTMLFormElement && status instanceof HTMLElement && submitButton instanceof HTMLButtonElement) {
+    const endpoint = form.getAttribute("action") || "";
+    const isDev =
+      window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+
+    if (!endpoint) {
+      submitButton.disabled = true;
+      submitButton.classList.add("opacity-60", "cursor-not-allowed");
+      status.hidden = false;
+      status.textContent = isDev
+        ? "Error de configuración: falta PUBLIC_FORMSPREE_ENDPOINT."
+        : "El formulario no está disponible en este momento. Escríbenos por WhatsApp o llámanos.";
+    }
+
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
+      if (!endpoint) return;
 
       status.hidden = false;
       status.textContent = "Enviando...";
@@ -148,7 +198,13 @@ import { CONTACT_CONFIG, WHATSAPP_URL } from '../data/config'
         }
 
         form.reset();
-        status.textContent = "¡Listo! Tu consulta fue enviada.";
+        status.textContent = "Mensaje enviado. Redirigiendo...";
+        if (typeof window.trackContactEvent === "function") {
+          window.trackContactEvent("contact_form_submit_success", { form_id: "contact-form" });
+        }
+        window.setTimeout(() => {
+          window.location.href = "/gracias";
+        }, 250);
       } catch (error) {
         status.textContent =
           "No se pudo enviar. Intenta nuevamente o escríbenos por WhatsApp.";

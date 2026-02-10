@@ -1,15 +1,12 @@
 ---
-/**
- * Floating Contact Button – WhatsApp
- * Centralizado desde data/config
- */
-import { WHATSAPP_URL } from '../data/config'
+import { CONTACT_CONFIG, WHATSAPP_URL } from '../data/config'
 ---
 
 <a
   href={WHATSAPP_URL}
   class="floating-contact"
   aria-label="Contacto por WhatsApp"
+  data-track-contact="whatsapp"
   target="_blank"
   rel="noopener noreferrer"
 >
@@ -30,6 +27,26 @@ import { WHATSAPP_URL } from '../data/config'
       fill="currentColor"></path>
   </svg>
 </a>
+
+<div class="mobile-sticky-contact" aria-label="Contacto rápido móvil">
+  <a
+    href={WHATSAPP_URL}
+    class="mobile-sticky-contact__item mobile-sticky-contact__item--primary"
+    data-track-contact="whatsapp"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    WhatsApp
+  </a>
+  <a
+    href={`tel:${CONTACT_CONFIG.phone.raw}`}
+    class="mobile-sticky-contact__item"
+    data-track-contact="phone"
+  >
+    Llamar
+  </a>
+  <a href="/contacto" class="mobile-sticky-contact__item">Formulario</a>
+</div>
 
 <style>
   .floating-contact {
@@ -87,14 +104,59 @@ import { WHATSAPP_URL } from '../data/config'
 
   @media (max-width: 768px) {
     .floating-contact {
-      bottom: 1rem;
-      right: 1rem;
-      height: 52px;
-      padding: 0 0.9rem 0 0.85rem;
+      display: none;
+    }
+  }
+
+  .mobile-sticky-contact {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    .mobile-sticky-contact {
+      position: fixed;
+      left: 0.75rem;
+      right: 0.75rem;
+      bottom: 0.75rem;
+      z-index: 90;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 14px;
+      background: rgba(14, 42, 66, 0.42);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 12px 32px rgba(8, 24, 40, 0.4);
+      padding: 0.45rem;
     }
 
-    .floating-label {
-      display: none;
+    .mobile-sticky-contact__item {
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      color: rgba(255, 255, 255, 0.95);
+      font-size: 0.78rem;
+      font-weight: 600;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .mobile-sticky-contact__item--primary {
+      background: #25d366;
+      border-color: #25d366;
+      color: #0b3d21;
+    }
+  }
+</style>
+
+<style is:global>
+  @media (max-width: 768px) {
+    body {
+      padding-bottom: 5.25rem;
     }
   }
 </style>

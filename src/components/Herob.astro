@@ -6,11 +6,20 @@
  *   (You can temporarily point it to any image; best results with removed background.)
  * - Tailwind is assumed installed and working.
  */
+import {
+  CONTACT_CONFIG,
+  LAWYER_FULL_NAME,
+  RESPONSE_TIME_HOURS,
+  SERVICE_AREAS_SHORT,
+  SERVICE_LOCATION,
+  WHATSAPP_URL
+} from '../data/config'
+
 const navItems = [
   { label: 'Inicio', href: '/' },
   { label: 'Sobre', href: '/#sobre' },
   { label: 'Servicios', href: '/#servicios' },
-  { label: 'Contacto', href: '/#contacto' }
+  { label: 'Contacto', href: '/contacto' }
 ]
 ---
 
@@ -130,7 +139,7 @@ const navItems = [
       </div>
 
       <p class="mt-10 text-[11px] uppercase tracking-[0.28em] text-white/65">
-        Servicios especializados en derecho sucesorio
+        Abogada en la Región del Biobío · Familia, sucesorio e inmobiliario
       </p>
 
       
@@ -151,10 +160,21 @@ const navItems = [
 
       <div class="mt-9 flex flex-wrap items-center gap-4 animate-hero-cta">
         <a
-          href="/contacto"
+          href={WHATSAPP_URL}
           class="inline-flex items-center justify-center rounded-xl bg-[var(--color-accent-500)] px-6 py-3 text-sm font-medium text-white shadow-[0_18px_45px_rgba(0,0,0,0.35)] transition hover:bg-[var(--color-accent-600)] focus:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+          data-track-contact="whatsapp"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          Agendar consulta
+          WhatsApp ahora
+        </a>
+
+        <a
+          href={`tel:${CONTACT_CONFIG.phone.raw}`}
+          class="inline-flex items-center justify-center rounded-xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-white/90 backdrop-blur-xl transition hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#CF6538]/70"
+          data-track-contact="phone"
+        >
+          Llamar ahora
         </a>
 
         <a
@@ -163,6 +183,18 @@ const navItems = [
         >
           Ver servicios
         </a>
+      </div>
+
+      <p class="mt-4 text-xs tracking-wide text-white/70">
+        Respuesta en menos de {RESPONSE_TIME_HOURS} horas hábiles
+      </p>
+
+      <div class="mt-6 flex flex-wrap gap-2 text-[11px] leading-normal text-white/85">
+        <span class="rounded-full border border-white/15 bg-white/5 px-3 py-1.5">{LAWYER_FULL_NAME}</span>
+        <span class="rounded-full border border-white/15 bg-white/5 px-3 py-1.5">
+          {SERVICE_AREAS_SHORT.join(' / ')}
+        </span>
+        <span class="rounded-full border border-white/15 bg-white/5 px-3 py-1.5">{SERVICE_LOCATION}</span>
       </div>
 
       <div class="mt-10 text-xs tracking-[0.18em] text-white/55">
@@ -211,7 +243,7 @@ const navItems = [
 
       
       <div
-        class="pointer-events-none absolute bottom-16 right-12 z-20 h-3 w-3 rotate-45 bg-white/70 opacity-80 md:bottom-20 md:right-16"
+        class="pointer-events-none absolute bottom-16 right-12 z-20 hidden h-3 w-3 rotate-45 bg-white/70 opacity-80 md:block md:bottom-20 md:right-16"
       >
       </div>
     </div>

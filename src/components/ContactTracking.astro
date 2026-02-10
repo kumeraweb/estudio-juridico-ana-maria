@@ -5,14 +5,10 @@
       phone: 'contact_phone_click'
     }
 
-    function gtag_report_conversion(url, target) {
+    function gtag_report_conversion(url) {
       const callback = function () {
         if (typeof url !== 'undefined') {
-          if (target === '_blank') {
-            window.open(url, '_blank', 'noopener,noreferrer')
-          } else {
-            window.location.href = url
-          }
+          window.location.href = url
         }
       }
 
@@ -39,17 +35,15 @@
     }
 
     document.addEventListener('click', (event) => {
-      const target = event.target
-      if (!(target instanceof Element)) return
+      const clickedElement = event.target
+      if (!(clickedElement instanceof Element)) return
 
-      const link = target.closest('[data-track-contact]')
-      if (!(link instanceof HTMLElement)) return
+      const link = clickedElement.closest('[data-track-contact]')
+      if (!(link instanceof HTMLAnchorElement)) return
 
       const contactType = link.dataset.trackContact
       const eventName = contactType ? map[contactType] : undefined
       if (!eventName) return
-
-      event.preventDefault()
 
       window.trackContactEvent(eventName, {
         contact_type: contactType,
@@ -58,7 +52,23 @@
 
       const href = link.getAttribute('href') || undefined
       const target = link.getAttribute('target') || undefined
-      gtag_report_conversion(href, target)
+      const isExternalContactLink =
+        !!href && (href.startsWith('tel:') || href.includes('wa.me') || target === '_blank')
+
+      // Keep native navigation for tel:/WhatsApp links to avoid popup/callback blocking.
+      if (isExternalContactLink) {
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'conversion', {
+            send_to: 'AW-17912967968/lkHiCLrsqvYbEKDmyN1C',
+            value: 1.0,
+            currency: 'CLP'
+          })
+        }
+        return
+      }
+
+      event.preventDefault()
+      gtag_report_conversion(href)
     })
   })()
 </script>
